@@ -1,0 +1,50 @@
+Patient Record:
+  - key: Patient Record
+    query_template:
+      - "What is the {field} recorded for the patient in {filename}?"
+    fields:
+      - patient_id
+      - diagnosis
+      - date_of_birth
+    tags:
+      - retrieval
+      - erp
+      - metadata
+
+Lab Report:
+  - key: Lab Report
+    query_template:
+      - "What is the {field} reported in {filename}?"
+    fields:
+      - specimen
+      - test_name
+      - result
+    tags:
+      - retrieval
+      - medical
+      - metadata
+
+Prescription:
+  - key: Prescription
+    query_template:
+      - "What is the {field} listed on the prescription in {filename}?"
+    fields:
+      - medication
+      - dosage
+      - refills
+    tags:
+      - retrieval
+      - medical
+      - metadata
+
+Discharge Summary:
+  - key: Discharge Summary
+    query_template:
+      - "What is the {field} in the discharge summary {filename}?"
+    fields:
+      - admission_date
+      - discharge_date
+    tags:
+      - retrieval
+      - medical
+      - metadata

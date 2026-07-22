@@ -1,0 +1,192 @@
+Invoice:
+
+  - name: invoice_number
+    patterns:
+      - 'invoice\s*(?:no|number|#)\s*[:\-]?\s*([A-Za-z0-9\-]+)'
+      - 'INV-\d+'
+
+  - name: customer
+    patterns:
+      - 'customer\s*:\s*([^\n]+)'
+      - 'bill\s*to\s*:\s*([^\n]+)'
+
+  - name: amount
+    patterns:
+      - 'total\s*(?:due|amount)?\s*[:\-]?\s*\$?\s*([\d,]+\.\d{2})'
+      - 'amount\s*[:\-]?\s*\$?\s*([\d,]+\.\d{2})'
+      - 'сумма\s*[:\-]?\s*([\d,]+\.\d{2})'
+
+  - name: supplier
+    patterns:
+      - 'supplier\s*:\s*([^\n]+)'
+      - 'vendor\s*:\s*([^\n]+)'
+      - 'seller\s*:\s*([^\n]+)'
+
+  - name: currency
+    patterns:
+      - 'amount.*?\b(USD|EUR|UAH|PLN|GBP)\b'
+      - '\b(USD|EUR|UAH|PLN|GBP)\b'
+
+Purchase Order:
+
+  - name: po_number
+    patterns:
+      - '(?:p\.?o\.?|purchase\s*order)\s*(?:no|number|#)\s*[:\-]?\s*([A-Za-z0-9\-]+)'
+
+  - name: vendor
+    patterns:
+      - 'vendor\s*(?:name)?\s*[:\-]?\s*([^\n]+)'
+
+  - name: amount
+    patterns:
+      - 'total\s*[:\-]?\s*\$?\s*([\d,]+\.\d{2})'
+
+Vendor Profile:
+
+  - name: vendor
+    patterns:
+      - 'vendor\s*name\s*[:\-]?\s*([^\n]+)'
+
+  - name: phone
+    patterns:
+      - '(?:phone|tel)\s*[:\-]?\s*([\d\-\+\(\) ]{7,})'
+
+  - name: email
+    patterns:
+      - '([\w.\-]+@[\w.\-]+\.\w+)'
+
+  - name: address
+    patterns:
+      - 'address\s*[:\-]?\s*([^\n]+)'
+
+Employment Contract:
+
+  - name: contract_number
+    patterns:
+      - 'contract\s*(?:no|number|#)\s*[:\-]?\s*([A-Za-z0-9\-]+)'
+
+  - name: contractor
+    patterns:
+      - 'contractor\s*[:\-]?\s*([^\n]+)'
+      - 'employer\s*[:\-]?\s*([^\n]+)'
+
+  - name: customer
+    patterns:
+      - 'customer\s*[:\-]?\s*([^\n]+)'
+      - 'bill\s*to\s*[:\-]?\s*([^\n]+)'
+
+  - name: start_date
+    patterns:
+      - 'signed\s*:\s*([\d-]+)'
+      - 'start\s*date\s*:\s*([\d-]+)'
+
+  - name: end_date
+    patterns:
+      - 'valid\s+until\s*:\s*([\d-]+)'
+      - 'end\s*date\s*:\s*([\d-]+)'
+
+Generic Contract:
+
+  - name: contract_number
+    patterns:
+      - 'contract\s*(?:no|number|#)\s*[:\-]?\s*([A-Za-z0-9\-]+)'
+
+  - name: contractor
+    patterns:
+      - 'contractor\s*[:\-]?\s*([^\n]+)'
+
+  - name: customer
+    patterns:
+      - 'customer\s*[:\-]?\s*([^\n]+)'
+      - 'client\s*[:\-]?\s*([^\n]+)'
+
+  - name: start_date
+    patterns:
+      - 'signed\s*[:\-]?\s*([\d\-\.]+)'
+      - 'start\s*date\s*[:\-]?\s*([\d\-\.]+)'
+
+  - name: end_date
+    patterns:
+      - 'valid\s*until\s*[:\-]?\s*([\d\-\.]+)'
+      - 'end\s*date\s*[:\-]?\s*([\d\-\.]+)'
+
+Insurance Policy:
+
+  - name: policy_number
+    patterns:
+      - 'policy\s*(?:no|number|#)\s*[:\-]?\s*([A-Za-z0-9\-]+)'
+
+  - name: policy_holder
+    patterns:
+      - 'policy\s*holder\s*[:\-]?\s*([^\n]+)'
+
+  - name: coverage_period
+    patterns:
+      - 'coverage\s*period\s*[:\-]?\s*([^\n]+)'
+
+Service Ticket:
+
+  - name: ticket_number
+    patterns:
+      - 'ticket\s*(?:no|number|#)\s*[:\-]?\s*([A-Za-z0-9\-]+)'
+
+  - name: status
+    patterns:
+      - 'status\s*[:\-]?\s*([A-Za-z ]+)'
+
+  - name: engineer
+    patterns:
+      - '(?:assigned\s*)?engineer\s*[:\-]?\s*([^\n]+)'
+
+Bank Statement:
+
+  - name: account_number
+    patterns:
+      - 'номер\s+сч[её]та\s*[:\-]?\s*([A-Za-z0-9\-]+)'
+      - 'account\s*(?:number|no)\s*[:\-]?\s*([A-Za-z0-9\-]+)'
+      - 'account\s*#\s*([A-Za-z0-9\-]+)'
+
+  - name: statement_period
+    patterns:
+      - 'statement\s*period\s*[:\-]?\s*([^\n]+)'
+      - 'период\s+выписки\s*[:\-]?\s*([^\n]+)'
+
+  - name: balance
+    patterns:
+      - 'финальн\w*\s+баланс[\s\S]{0,120}?\$?([\d,]+\.\d{2})'
+      - 'closing\s+balance[\s\S]{0,80}?\$?([\d,]+\.\d{2})'
+      - 'final\s+balance[\s\S]{0,80}?\$?([\d,]+\.\d{2})'
+
+CRM Opportunity:
+
+  - name: opportunity_name
+    patterns:
+      - 'opportunity(?:\s*name)?\s*[:\-]?\s*([^\n]+)'
+
+  - name: stage
+    patterns:
+      - '(?:deal\s*)?stage\s*[:\-]?\s*([^\n]+)'
+
+  - name: value
+    patterns:
+      - 'value\s*[:\-]?\s*([\d,]+(?:\.\d{2})?)'
+
+Project Report:
+
+  - name: project_name
+    patterns:
+      - 'project\s*(?:name)?\s*[:\-]?\s*([^\n]+)'
+
+  - name: status
+    patterns:
+      - 'status\s*[:\-]?\s*([A-Za-z ]+)'
+
+Meeting Minutes:
+
+  - name: meeting_date
+    patterns:
+      - 'date\s*[:\-]?\s*([\d/\-\.]+)'
+
+  - name: attendees
+    patterns:
+      - 'attendees\s*[:\-]?\s*([^\n]+)'

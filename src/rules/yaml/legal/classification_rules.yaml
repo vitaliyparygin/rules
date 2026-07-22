@@ -1,0 +1,37 @@
+NDA:
+  filename_patterns:
+    - nda
+    - non[-_ ]?disclosure
+
+  content_patterns:
+    - non[-\s]?disclosure\s*agreement
+    - confidential\s*information
+
+Litigation Brief:
+  filename_patterns:
+    - brief
+    - litigation
+
+  content_patterns:
+    - plaintiff
+    - defendant
+    - court\s*of
+
+Contract:
+  filename_patterns:
+    - contract
+    - agreement
+
+  content_patterns:
+    - this\s*agreement
+    - parties\s*hereto
+    - governing\s*law
+
+Power of Attorney:
+  filename_patterns:
+    - power[-_ ]?of[-_ ]?attorney
+    - \bpoa\b
+
+  content_patterns:
+    - power\s*of\s*attorney
+    - attorney[-\s]?in[-\s]?fact

@@ -1,0 +1,34 @@
+Patient Record:
+  filename_patterns:
+   - 'patient'
+   - 'chart'
+  content_patterns:
+   - 'patient\s*(id|name)'
+   - 'date\s*of\s*birth'
+   - 'diagnosis'
+
+Lab Report:
+  filename_patterns:
+   - 'lab[-_ ]?report'
+   - 'lab[-_ ]?result'
+  content_patterns:
+   - 'lab\s*(results?|report)'
+   - 'reference\s*range'
+   - 'specimen'
+
+Prescription:
+  filename_patterns:
+   - 'prescription'
+   - '\brx\b'
+  content_patterns:
+   - 'prescri(bed|ption)'
+   - 'dosage'
+   - 'refills?'
+
+Discharge Summary:
+  filename_patterns:
+    discharge
+  content_patterns:
+   - 'discharge\s*summary'
+   - 'admission\s*date'
+   - 'discharge\s*date'

@@ -1,0 +1,42 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "rules"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = [
+    "pyyaml",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8",
+    "pytest-cov>=6",
+    "ruff>=0.12",
+    "mypy",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+addopts = [
+    "-ra",
+    "--cov=src/rules",
+    "--cov-report=term-missing",
+    "--cov-report=xml",
+]
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = false
+fail_under = 90
+precision = 1
+
+exclude_lines = [
+    "pragma: no cover",
+    "if TYPE_CHECKING:",
+    "raise NotImplementedError",
+]

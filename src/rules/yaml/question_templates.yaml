@@ -1,0 +1,22 @@
+Invoice:
+
+  templates:
+
+    - What is the {field} on invoice {filename}?
+    - Extract the {field} from {filename}.
+    - Find the invoice {field}.
+    - Which {field} appears on this invoice?
+
+  fields:
+
+    invoice_number:
+      required: false
+
+    amount:
+      required: false
+
+    customer:
+      required: false
+
+    currency:
+      required: false

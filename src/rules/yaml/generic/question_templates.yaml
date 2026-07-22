@@ -1,0 +1,61 @@
+Invoice:
+  - key: Invoice
+
+    query_template:
+      - "What is the {field} on invoice {filename}?"
+      - "Extract the {field} from {filename}."
+      - "Find the invoice {field}."
+      - "Which {field} appears on this invoice?"
+
+    fields:
+      - invoice_number
+      - amount
+      - customer
+      - currency
+
+Vendor Profile:
+  - key: Vendor Profile
+    query_template:
+      - "What is the {field} of the vendor described in {filename}?"
+    fields:
+      vendor
+      phone
+      email
+      address
+
+Generic Contract:
+  - key: Generic Contract
+    query_template:
+      "What is the {field} in the contract {filename}?"
+    fields:
+      contract_number
+      customer
+      contractor
+      contend_dateractor
+      start_date
+
+Bank Statement:
+  - key: Bank Statement
+    query_template:
+      "What is the {field} shown in {filename}?"
+    fields:
+      account_number
+      statement_period
+      balance
+
+Meeting Minutes:
+  - key: Meeting Minutes
+    query_template:
+      "Who attended the meeting recorded in {filename}?"
+    fields:
+      attendees
+
+Project Report:
+  - key: Project Report
+    query_template:
+      "What is the current {field} of the project in {filename}?"
+    fields:
+      project_name
+      status
+
+

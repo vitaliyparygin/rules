@@ -1,0 +1,77 @@
+Purchase Order:
+  filename_patterns:
+    - "purchase[-_ ]?order"
+    - "\\bpo[-_]?\\d+"
+
+  content_patterns:
+    - "purchase\\s*order"
+    - "\\bp\\.?o\\.?\\s*(no|number|#)"
+
+
+Invoice:
+  filename_patterns:
+    - invoice
+    - "\\binv[-_]?\\d+"
+
+  content_patterns:
+    - "invoice\\s*(no|number|#)"
+    - "total\\s*due"
+    - "bill\\s*to"
+
+
+Contract:
+  filename_patterns:
+    - contract
+    - msa
+    - agreement
+
+  content_patterns:
+    - "this\\s*agreement"
+    - "parties\\s*hereto"
+    - "effective\\s*date"
+
+Vendor Profile:
+  filename_patterns:
+    - vendor
+    - supplier
+
+  content_patterns:
+    - 'vendor\s*(name|profile|id)'
+    - 'supplier\s*information'
+
+Service Ticket:
+  filename_patterns:
+    - ticket
+    - "service[-_ ]?request"
+
+  content_patterns:
+    - 'ticket\s*(no|number|#)'
+    - 'assigned\s*engineer'
+    - 'priority\s*:'
+
+CRM Opportunity:
+  filename_patterns:
+    - "opportunity"
+    - "\bcrm\b"
+    - "deal"
+
+  content_patterns:
+    - 'opportunity\s*(name|stage|value)'
+    - 'deal\s*stage'
+
+Project:
+  filename_patterns:
+    - "project"
+
+  content_patterns:
+    - 'project\s*(status|milestones|deliverables)'
+
+Employee:
+  filename_patterns:
+    - "employee"
+    - "hr[-_ ]?record"
+
+  content_patterns:
+    - 'employee\s*id'
+    - 'department\s*:'
+    - 'hire\s*date'

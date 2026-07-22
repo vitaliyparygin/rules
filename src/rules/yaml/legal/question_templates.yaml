@@ -1,0 +1,61 @@
+NDA:
+  - key: nda
+
+    query_template:
+    - What is the {field} of the NDA in {filename}?
+
+    tags:
+    - retrieval
+    - legal
+    - metadata
+
+    fields:
+    - effective_date
+    - disclosing_party
+    - receiving_party
+
+Litigation Brief:
+  - key: Litigation Brief
+
+    query_template:
+    - Who is the {field} named in {filename}?
+
+    tags:
+    - retrieval
+    - legal
+    - metadata
+
+    fields:
+    - plaintiff
+    - defendant
+
+Contract:
+  - key: Contract
+
+    query_template:
+    - What is the {field} specified in contract {filename}?
+
+    tags:
+    - retrieval
+    - legal
+    - metadata
+
+    fields:
+    - governing_law
+    - start_date
+    - end_date
+
+Power of Attorney:
+  - key: Power of Attorney
+
+    query_template:
+    - Who is the {field} in the power of attorney {filename}?
+
+    tags:
+    - retrieval
+    - legal
+    - metadata
+
+    fields:
+    - principal
+    - agent

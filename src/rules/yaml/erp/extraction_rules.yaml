@@ -1,0 +1,82 @@
+Purchase Order:
+  po_number:
+    - '(?:p\.?o\.?|purchase\s*order)\s*(?:no|number|#)\s*[:\-]?\s*([A-Za-z0-9\-]+)'
+
+  vendor:
+    - 'vendor\s*(?:name)?\s*[:\-]?\s*([^\n]+)'
+
+  amount:
+    - 'total\s*[:\-]?\s*\$?\s*([\d,]+\.\d{2})'
+
+  delivery_date:
+    - 'delivery\s*date\s*[:\-]?\s*([\d/\-\.]+)'
+
+Invoice:
+  invoice_number:
+    - 'invoice\s*(?:no|number|#)\s*[:\-]?\s*([A-Za-z0-9\-]+)'
+  amount:
+    - 'total\s*(?:due|amount)?\s*[:\-]?\s*\$?\s*([\d,]+\.\d{2})'
+  customer:
+    - 'bill\s*to\s*[:\-]?\s*([^\n]+)'
+  currency:
+    - '\b(USD|EUR|GBP|UAH|PLN)\b'
+  due_date:
+    - 'due\s*date\s*[:\-]?\s*([\d/\-\.]+)'
+
+Contract:
+  contract_number:
+    'contract\s*(?:no|number|#)\s*[:\-]?\s*([A-Za-z0-9\-]+)'
+  customer:
+    'client\s*[:\-]?\s*([^\n]+)'
+  contractor:
+    'contractor\s*[:\-]?\s*([^\n]+)'
+  start_date:
+    'start\s*date\s*[:\-]?\s*([\d/\-\.]+)'
+  'end_date':
+    'end\s*date\s*[:\-]?\s*([\d/\-\.]+)'
+
+
+Vendor Profile:
+  vendor:
+    - 'vendor\s*name\s*[:\-]?\s*([^\n]+)'
+
+  phone:
+    - '(?:phone|tel)\s*[:\-]?\s*([\d\-\+\(\) ]{7,})'
+  email:
+    '([\w.\-]+@[\w.\-]+\.\w+)'
+  address:
+    'address\s*[:\-]?\s*([^\n]+)'
+
+Service Ticket:
+  ticket_number:
+    - 'ticket\s*(?:no|number|#)\s*[:\-]?\s*([A-Za-z0-9\-]+)'
+  status:
+    - 'status\s*[:\-]?\s*([A-Za-z ]+)'
+  engineer:
+    - '(?:assigned\s*)?engineer\s*[:\-]?\s*([^\n]+)'
+  priority:
+    - 'priority\s*[:\-]?\s*([A-Za-z]+)'
+
+CRM Opportunity:
+  opportunity_name:
+    - 'opportunity\s*name\s*[:\-]?\s*([^\n]+)'
+  stage:
+    - '(?:deal\s*)?stage\s*[:\-]?\s*([^\n]+)'
+  value:
+    - 'value\s*[:\-]?\s*\$?\s*([\d,]+\.\d{2})'
+
+Project:
+  project_name:
+    - 'project\s*(?:name)?\s*[:\-]?\s*([^\n]+)'
+  status:
+    - 'status\s*[:\-]?\s*([A-Za-z ]+)'
+  manager:
+    - '(?:project\s*)?manager\s*[:\-]?\s*([^\n]+)'
+
+Employee:
+  employee_id:
+    - 'employee\s*id\s*[:\-]?\s*([A-Za-z0-9\-]+)'
+  department:
+    - 'department\s*[:\-]?\s*([^\n]+)'
+  hire_date:
+    - 'hire\s*date\s*[:\-]?\s*([\d/\-\.]+)'

@@ -1,0 +1,26 @@
+Patient Record:
+  patient_id:
+    'patient\s*id\s*[:\-]?\s*([A-Za-z0-9\-]+)'
+  diagnosis:
+    'diagnosis\s*[:\-]?\s*([^\n]+)'
+  date_of_birth:
+    'date\s*of\s*birth\s*[:\-]?\s*([\d/\-\.]+)'
+Lab Report:
+  specimen:
+    'specimen\s*[:\-]?\s*([^\n]+)'
+  test_name:
+    'test\s*(?:name)?\s*[:\-]?\s*([^\n]+)'
+  result:
+    'result\s*[:\-]?\s*([^\n]+)'
+Prescription:
+  medication:
+    'medication\s*[:\-]?\s*([^\n]+)'
+  dosage:
+    'dosage\s*[:\-]?\s*([^\n]+)'
+  refills:
+    'refills?\s*[:\-]?\s*(\d+)'
+Discharge Summary:
+  admission_date:
+    'admission\s*date\s*[:\-]?\s*([\d/\-\.]+)'
+  discharge_date:
+    'discharge\s*date\s*[:\-]?\s*([\d/\-\.]+)'

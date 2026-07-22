@@ -1,0 +1,36 @@
+NDA:
+  effective_date:
+    - effective\s*date\s*[:\-]?\s*([\d/\-\.]+)
+
+  disclosing_party:
+    - disclosing\s*party\s*[:\-]?\s*([^\n]+)
+
+  receiving_party:
+    - receiving\s*party\s*[:\-]?\s*([^\n]+)
+
+Litigation Brief:
+  plaintiff:
+    - plaintiff\s*[:\-]?\s*([^\n]+)
+
+  defendant:
+    - defendant\s*[:\-]?\s*([^\n]+)
+
+  court:
+    - court\s*of\s*[:\-]?\s*([^\n]+)
+
+Contract:
+  governing_law:
+    - governing\s*law\s*[:\-]?\s*([^\n]+)
+
+  start_date:
+    - start\s*date\s*[:\-]?\s*([\d/\-\.]+)
+
+  end_date:
+    - end\s*date\s*[:\-]?\s*([\d/\-\.]+)
+
+Power of Attorney:
+  principal:
+    - principal\s*[:\-]?\s*([^\n]+)
+
+  agent:
+    - agent\s*[:\-]?\s*([^\n]+)
