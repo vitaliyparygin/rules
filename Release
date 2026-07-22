@@ -1,0 +1,11 @@
+v0.1.0
+
+Initial public release.
+
+Highlights
+
+- YAML rule definitions
+- Validation tests
+- CI
+- 90%+ coverage
+- MIT License
