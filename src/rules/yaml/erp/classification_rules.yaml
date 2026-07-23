@@ -10,7 +10,7 @@ Purchase Order:
 
 Invoice:
   filename_patterns:
-    - invoice
+    - 'invoice'
     - "\\binv[-_]?\\d+"
 
   content_patterns:
@@ -21,9 +21,9 @@ Invoice:
 
 Contract:
   filename_patterns:
-    - contract
-    - msa
-    - agreement
+    - 'contract'
+    - 'msa'
+    - 'agreement'
 
   content_patterns:
     - "this\\s*agreement"
@@ -32,8 +32,8 @@ Contract:
 
 Vendor Profile:
   filename_patterns:
-    - vendor
-    - supplier
+    - 'vendor'
+    - 'supplier'
 
   content_patterns:
     - 'vendor\s*(name|profile|id)'
@@ -41,7 +41,7 @@ Vendor Profile:
 
 Service Ticket:
   filename_patterns:
-    - ticket
+    - 'ticket'
     - "service[-_ ]?request"
 
   content_patterns:

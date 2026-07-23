@@ -10,16 +10,6 @@ from .models import (QuestionTemplateRule,
 
 RULES_DIR = Path(__file__).resolve().parent
 
-FIELD_RULES_FILE = RULES_DIR / "yaml/field_rules.yaml"
-CLASSIFICATION_RULES_FILE = RULES_DIR / "yaml/classification_rules.yaml"
-EXTRACTION_RULES_FILE = RULES_DIR / "yaml/extraction_rules.yaml"
-QUESTION_RULES_FILE = RULES_DIR / "yaml/question_rules.yaml"
-
-ROOT = Path(__file__).resolve().parents[1]
-
-RULES = ROOT / "src" / "rules" / "yaml"
-
-
 def load_template(template: str) -> TemplateDefinition:
     base = RULES_DIR / "yaml" / template
 
@@ -49,11 +39,14 @@ def load_field_rules(
     path: Path | None = None,
 ) -> dict[str, tuple[FieldRule, ...]]:
 
-    path = path or FIELD_RULES_FILE
+    path = path or (RULES_DIR / "yaml" / "field_rules.yaml")
 
     with path.open("r", encoding="utf-8") as f:
         raw = yaml.safe_load(f)
-
+    if raw is None:
+        raise ValueError(
+            f"{path} is empty or invalid YAML"
+        )
     result: dict[str, tuple[FieldRule, ...]] = {}
 
     for document_type, fields in raw.items():
@@ -72,11 +65,14 @@ def load_classification_rules(
     path: Path | None = None,
 ) -> tuple[ClassificationRule, ...]:
 
-    path = path or CLASSIFICATION_RULES_FILE
+    path = path or (RULES_DIR / "yaml/erp" / "classification_rules.yaml")
 
     with path.open("r", encoding="utf-8") as f:
         raw = yaml.safe_load(f)
-
+    if raw is None:
+        raise ValueError(
+            f"{path} is empty or invalid YAML"
+        )
     result: list[ClassificationRule] = []
 
     for document_type, rule in raw.items():
@@ -90,10 +86,14 @@ def load_classification_rules(
 
     return tuple(result)
 
-def load_question_templates(path: Path) -> dict[str, list[QuestionTemplateRule]]:
+def load_question_templates(path: Path | None = None,) -> dict[str, list[QuestionTemplateRule]]:
+    path = path or (RULES_DIR / "yaml/erp" / "question_templates.yaml")
     with path.open("r", encoding="utf-8") as f:
         raw = yaml.safe_load(f)
-
+    if raw is None:
+        raise ValueError(
+            f"{path} is empty or invalid YAML"
+        )
     result: dict[str, list[QuestionTemplateRule]] = {}
 
     for document_type, specs in raw.items():
@@ -120,11 +120,14 @@ def load_question_templates(path: Path) -> dict[str, list[QuestionTemplateRule]]
 def load_extraction_rules(
     path: Path | None = None,
 ) -> dict[str, tuple[FieldRule, ...]]:
-    path = path or EXTRACTION_RULES_FILE
+    path = path or (RULES_DIR / "yaml/erp" / "extraction_rules.yaml")
 
     with path.open("r", encoding="utf-8") as f:
         raw = yaml.safe_load(f)
-
+    if raw is None:
+        raise ValueError(
+            f"{path} is empty or invalid YAML"
+        )
     result: dict[str, tuple[FieldRule, ...]] = {}
 
     for document_type, fields in raw.items():

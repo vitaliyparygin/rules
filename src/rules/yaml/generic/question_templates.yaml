@@ -18,44 +18,44 @@ Vendor Profile:
     query_template:
       - "What is the {field} of the vendor described in {filename}?"
     fields:
-      vendor
-      phone
-      email
-      address
+      - vendor
+      - phone
+      - email
+      - address
 
 Generic Contract:
   - key: Generic Contract
     query_template:
       "What is the {field} in the contract {filename}?"
     fields:
-      contract_number
-      customer
-      contractor
-      contend_dateractor
-      start_date
+      - contract_number
+      - customer
+      - contractor
+      - contend_dateractor
+      - start_date
 
 Bank Statement:
   - key: Bank Statement
     query_template:
       "What is the {field} shown in {filename}?"
     fields:
-      account_number
-      statement_period
-      balance
+      - account_number
+      - statement_period
+      - balance
 
 Meeting Minutes:
   - key: Meeting Minutes
     query_template:
       "Who attended the meeting recorded in {filename}?"
     fields:
-      attendees
+      - attendees
 
 Project Report:
   - key: Project Report
     query_template:
       "What is the current {field} of the project in {filename}?"
     fields:
-      project_name
-      status
+      - project_name
+      - status
 
 

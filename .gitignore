@@ -3,3 +3,8 @@ coverage.xml
 htmlcov/
 .pytest_cache/
 .DS_Store
+
+# Bytecode
+__pycache__/
+*.py[cod]
+*$py.class

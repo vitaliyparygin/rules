@@ -25,15 +25,15 @@ Invoice:
 
 Contract:
   contract_number:
-    'contract\s*(?:no|number|#)\s*[:\-]?\s*([A-Za-z0-9\-]+)'
+    - 'contract\s*(?:no|number|#)\s*[:\-]?\s*([A-Za-z0-9\-]+)'
   customer:
-    'client\s*[:\-]?\s*([^\n]+)'
+    - 'client\s*[:\-]?\s*([^\n]+)'
   contractor:
-    'contractor\s*[:\-]?\s*([^\n]+)'
+    - 'contractor\s*[:\-]?\s*([^\n]+)'
   start_date:
-    'start\s*date\s*[:\-]?\s*([\d/\-\.]+)'
+    - 'start\s*date\s*[:\-]?\s*([\d/\-\.]+)'
   'end_date':
-    'end\s*date\s*[:\-]?\s*([\d/\-\.]+)'
+    - 'end\s*date\s*[:\-]?\s*([\d/\-\.]+)'
 
 
 Vendor Profile:
@@ -43,9 +43,9 @@ Vendor Profile:
   phone:
     - '(?:phone|tel)\s*[:\-]?\s*([\d\-\+\(\) ]{7,})'
   email:
-    '([\w.\-]+@[\w.\-]+\.\w+)'
+    - '([\w.\-]+@[\w.\-]+\.\w+)'
   address:
-    'address\s*[:\-]?\s*([^\n]+)'
+    - 'address\s*[:\-]?\s*([^\n]+)'
 
 Service Ticket:
   ticket_number:
