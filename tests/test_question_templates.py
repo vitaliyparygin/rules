@@ -1,4 +1,4 @@
-from helpers import load_template
+from rules.loader import load_template
 
 def test_question_templates_are_not_empty():
     for template in ("erp", "legal", "medical"):

@@ -1,4 +1,4 @@
-from helpers import load_template
+from rules.loader import load_template
 
 def test_every_field_has_regex():
     for template in ("erp", "legal", "medical"):

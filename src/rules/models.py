@@ -1,7 +1,11 @@
 from __future__ import annotations
 from enum import StrEnum
 from dataclasses import dataclass, field
-# FieldRule
+
+@dataclass(frozen=True)
+class FieldRule:
+    name: str
+    patterns: tuple[str, ...]
 
 class Difficulty(StrEnum):
     """Difficulty tiers for generated benchmark questions."""
@@ -38,17 +42,11 @@ class QuestionField:
 
 
 @dataclass(frozen=True)
-class QuestionSpec:
-    """
-    Template describing one family of questions.
-    """
-
+class QuestionTemplateRule:
     key: str
-    query_template: list[str]
+    query_template: tuple[str, ...]
     fields: tuple[QuestionField, ...]
-    difficulty: Difficulty = Difficulty.EASY
-    tags: tuple[str, ...] = ()
-    max_questions: int | None = None
+    tags: tuple[str, ...]
 
 
 @dataclass

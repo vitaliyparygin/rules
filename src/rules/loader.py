@@ -1,9 +1,8 @@
 from __future__ import annotations
 
-from dataclasses import dataclass
 from pathlib import Path
-from .models import (ExtractionField, ExtractionRuleSet, QuestionSpec,
-                      ClassificationRule, QuestionField)
+from .models import (QuestionTemplateRule,
+                      ClassificationRule, QuestionField, FieldRule)
 import yaml
 
 RULES_DIR = Path(__file__).parent
@@ -13,10 +12,18 @@ CLASSIFICATION_RULES_FILE = RULES_DIR / "yaml/classification_rules.yaml"
 EXTRACTION_RULES_FILE = RULES_DIR / "yaml/extraction_rules.yaml"
 QUESTION_RULES_FILE = RULES_DIR / "yaml/question_rules.yaml"
 
-@dataclass(frozen=True)
-class FieldRule:
-    name: str
-    patterns: tuple[str, ...]
+ROOT = Path(__file__).resolve().parents[1]
+
+RULES = ROOT / "src" / "rules" / "yaml"
+
+
+def load_template(template: str):
+    base = RULES_DIR / "yaml" /  template
+    return (
+        load_classification_rules(base / "classification_rules.yaml"),
+        load_extraction_rules(base / "extraction_rules.yaml"),
+        load_question_templates(base / "question_templates.yaml"),
+    )
 
 
 def load_field_rules(
@@ -51,24 +58,23 @@ def load_classification_rules(
     with path.open("r", encoding="utf-8") as f:
         raw = yaml.safe_load(f)
 
-    result = []
+    result = {}
 
     for document_type, rule in raw.items():
-        result.append(
-            ClassificationRule(
+        result[document_type] = ClassificationRule(
                 document_type=document_type,
                 filename_patterns=tuple(rule["filename_patterns"]),
                 content_patterns=tuple(rule["content_patterns"]),
             )
-        )
+
 
     return result
 
-def load_question_templates(path: Path) -> dict[str, list[QuestionSpec]]:
+def load_question_templates(path: Path) -> dict[str, list[QuestionTemplateRule]]:
     with path.open("r", encoding="utf-8") as f:
         raw = yaml.safe_load(f)
 
-    result: dict[str, list[QuestionSpec]] = {}
+    result: dict[str, list[QuestionTemplateRule]] = {}
 
     for document_type, specs in raw.items():
 
@@ -77,7 +83,7 @@ def load_question_templates(path: Path) -> dict[str, list[QuestionSpec]]:
         for spec in specs:
 
             result[document_type].append(
-                QuestionSpec(
+                QuestionTemplateRule(
                     key=spec["key"],
                     query_template=tuple(spec["query_template"]),
                     fields=tuple(
