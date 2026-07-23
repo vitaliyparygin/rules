@@ -8,7 +8,7 @@ from .models import (QuestionTemplateRule,
                      TemplateDefinition)
 
 
-RULES_DIR = Path(__file__).parent
+RULES_DIR = Path(__file__).resolve().parent
 
 FIELD_RULES_FILE = RULES_DIR / "yaml/field_rules.yaml"
 CLASSIFICATION_RULES_FILE = RULES_DIR / "yaml/classification_rules.yaml"
