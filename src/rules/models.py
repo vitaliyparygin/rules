@@ -60,3 +60,10 @@ class ExtractionField:
 class ExtractionRuleSet:
     document_type: str
     fields: dict[str, tuple[str, ...]]
+
+
+@dataclass(frozen=True)
+class TemplateDefinition:
+    classification_rules: dict[str, ClassificationRule]
+    extraction_rules: dict[str, tuple[ExtractionRuleSet, ...]]
+    question_templates: dict[str, list[QuestionSpec]]

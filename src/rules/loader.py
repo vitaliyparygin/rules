@@ -1,9 +1,12 @@
 from __future__ import annotations
-
+import yaml
 from pathlib import Path
 from .models import (QuestionTemplateRule,
-                      ClassificationRule, QuestionField, FieldRule)
-import yaml
+                      ClassificationRule,
+                     QuestionField,
+                     FieldRule,
+                     TemplateDefinition)
+
 
 RULES_DIR = Path(__file__).parent
 
@@ -17,12 +20,19 @@ ROOT = Path(__file__).resolve().parents[1]
 RULES = ROOT / "src" / "rules" / "yaml"
 
 
-def load_template(template: str):
-    base = RULES_DIR / "yaml" /  template
-    return (
-        load_classification_rules(base / "classification_rules.yaml"),
-        load_extraction_rules(base / "extraction_rules.yaml"),
-        load_question_templates(base / "question_templates.yaml"),
+def load_template(template: str) -> TemplateDefinition:
+    base = RULES_DIR / "yaml" / template
+
+    return TemplateDefinition(
+        classification_rules=load_classification_rules(
+            base / "classification_rules.yaml"
+        ),
+        extraction_rules=load_extraction_rules(
+            base / "extraction_rules.yaml"
+        ),
+        question_templates=load_question_templates(
+            base / "question_templates.yaml"
+        ),
     )
 
 

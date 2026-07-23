@@ -6,6 +6,7 @@ build-backend = "hatchling.build"
 name = "rules"
 version = "0.1.2"
 requires-python = ">=3.12"
+authors = [{ name = "vitaliy.parygin" }, { email = "vitaliy.parygin@gmail.com"}]
 dependencies = [
     "pyyaml",
 ]
