@@ -61,24 +61,23 @@ def load_field_rules(
 
 def load_classification_rules(
     path: Path | None = None,
-) -> dict[str, ClassificationRule]:
+) -> tuple[ClassificationRule]:
 
     path = path or CLASSIFICATION_RULES_FILE
 
     with path.open("r", encoding="utf-8") as f:
         raw = yaml.safe_load(f)
 
-    result = {}
+    result = []
 
     for document_type, rule in raw.items():
-        result[document_type] = ClassificationRule(
+        result.append(
+            ClassificationRule(
                 document_type=document_type,
                 filename_patterns=tuple(rule["filename_patterns"]),
                 content_patterns=tuple(rule["content_patterns"]),
             )
-
-
-    return result
+        )
 
 def load_question_templates(path: Path) -> dict[str, list[QuestionTemplateRule]]:
     with path.open("r", encoding="utf-8") as f:

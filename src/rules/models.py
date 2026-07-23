@@ -64,6 +64,7 @@ class ExtractionRuleSet:
 
 @dataclass(frozen=True)
 class TemplateDefinition:
-    classification_rules: dict[str, ClassificationRule]
-    extraction_rules: dict[str, tuple[ExtractionRuleSet, ...]]
+    name: str
+    classification_rules: tuple[ClassificationRule, ...]
+    extraction_rules: dict[str, tuple[FieldRule, ...]]
     question_templates: dict[str, list[QuestionSpec]]
