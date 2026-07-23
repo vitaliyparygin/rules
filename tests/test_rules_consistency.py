@@ -9,10 +9,15 @@ ROOT = Path(__file__).resolve().parent.parent / "src" / "rules" / "yaml"
 
 def test_document_types_are_consistent():
     for template in ("erp", "legal", "medical"):
-        classification, extraction, questions = load_template("medical")
+        definition = load_template(template)
+
+        classification = definition.classification_rules
+        extraction = definition.extraction_rules
+        questions = definition.question_templates
+
         classification_types = {
             rule.document_type
-            for rule in classification.values()
+            for rule in classification
         }
 
         assert classification_types == set(extraction)
@@ -20,7 +25,10 @@ def test_document_types_are_consistent():
 
 def test_question_fields_exist_in_extraction_rules():
     for template in ("erp", "legal", "medical"):
-        _, extraction, questions = load_template(template)
+        definition = load_template(template)
+
+        extraction = definition.extraction_rules
+        questions = definition.question_templates
 
         for document_type, specs in questions.items():
 
@@ -35,7 +43,9 @@ def test_question_fields_exist_in_extraction_rules():
 
 def test_no_duplicate_question_keys():
     for template in ("erp", "legal", "medical"):
-        _, _, questions = load_template(template)
+        definition = load_template(template)
+
+        questions = definition.question_templates
         for document_type, specs in questions.items():
             keys = [spec.key for spec in specs]
             assert len(keys) == len(set(keys)), (

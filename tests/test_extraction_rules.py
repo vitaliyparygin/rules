@@ -2,7 +2,9 @@ from rules.loader import load_template
 
 def test_every_field_has_regex():
     for template in ("erp", "legal", "medical"):
-        _, extraction, _ = load_template(template)
+        definition = load_template(template)
+
+        extraction = definition.extraction_rules
 
         for document_type, rules in extraction.items():
             for field in rules:

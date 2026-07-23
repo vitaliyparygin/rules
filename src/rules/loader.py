@@ -23,7 +23,7 @@ RULES = ROOT / "src" / "rules" / "yaml"
 def load_template(template: str) -> TemplateDefinition:
     base = RULES_DIR / "yaml" / template
 
-    classification = {}
+    classification: tuple[ClassificationRule, ...] = ()
     classification_file = base / "classification_rules.yaml"
 
     if classification_file.exists():
@@ -70,14 +70,14 @@ def load_field_rules(
 
 def load_classification_rules(
     path: Path | None = None,
-) -> tuple[ClassificationRule]:
+) -> tuple[ClassificationRule, ...]:
 
     path = path or CLASSIFICATION_RULES_FILE
 
     with path.open("r", encoding="utf-8") as f:
         raw = yaml.safe_load(f)
 
-    result = []
+    result: list[ClassificationRule] = []
 
     for document_type, rule in raw.items():
         result.append(
@@ -87,6 +87,8 @@ def load_classification_rules(
                 content_patterns=tuple(rule["content_patterns"]),
             )
         )
+
+    return tuple(result)
 
 def load_question_templates(path: Path) -> dict[str, list[QuestionTemplateRule]]:
     with path.open("r", encoding="utf-8") as f:

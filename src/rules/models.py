@@ -46,7 +46,9 @@ class QuestionTemplateRule:
     key: str
     query_template: tuple[str, ...]
     fields: tuple[QuestionField, ...]
-    tags: tuple[str, ...]
+    difficulty: Difficulty = Difficulty.EASY
+    tags: tuple[str, ...] = ()
+    max_questions: int | None = None
 
 
 @dataclass
@@ -67,4 +69,4 @@ class TemplateDefinition:
     name: str
     classification_rules: tuple[ClassificationRule, ...]
     extraction_rules: dict[str, tuple[FieldRule, ...]]
-    question_templates: dict[str, list[QuestionSpec]]
+    question_templates: dict[str, list[QuestionTemplateRule]]
