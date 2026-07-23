@@ -23,16 +23,25 @@ RULES = ROOT / "src" / "rules" / "yaml"
 def load_template(template: str) -> TemplateDefinition:
     base = RULES_DIR / "yaml" / template
 
+    classification = {}
+    classification_file = base / "classification_rules.yaml"
+
+    if classification_file.exists():
+        classification = load_classification_rules(classification_file)
+
+    extraction = {}
+    extraction_file = base / "extraction_rules.yaml"
+
+    if extraction_file.exists():
+        extraction = load_extraction_rules(extraction_file)
+
+    questions = load_question_templates(base / "question_templates.yaml")
+
     return TemplateDefinition(
-        classification_rules=load_classification_rules(
-            base / "classification_rules.yaml"
-        ),
-        extraction_rules=load_extraction_rules(
-            base / "extraction_rules.yaml"
-        ),
-        question_templates=load_question_templates(
-            base / "question_templates.yaml"
-        ),
+        name=template,
+        classification_rules=classification,
+        extraction_rules=extraction,
+        question_templates=questions,
     )
 
 
