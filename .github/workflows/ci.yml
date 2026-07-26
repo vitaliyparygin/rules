@@ -27,15 +27,7 @@ jobs:
       - name: Install package
         run: |
           python -m pip install --upgrade pip
-          pip install -e .
-          pip install pytest pytest-cov "ruff==0.15.22"
-
-#      - name: Debug
-#        run: |
-#          python --version
-#          ruff --version
-#          git rev-parse HEAD
-#          git status
+          pip install -e ".[dev]"
 
       - name: Lint
         run: |

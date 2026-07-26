@@ -15,7 +15,7 @@ dependencies = [
 dev = [
     "pytest>=8",
     "pytest-cov>=6",
-    "ruff>=0.12",
+    "ruff==0.15.22",
     "types-PyYAML",
     "mypy",
 ]
