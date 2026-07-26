@@ -30,12 +30,12 @@ jobs:
           pip install -e .
           pip install pytest pytest-cov "ruff==0.15.22"
 
-      - name: Debug
-        run: |
-          python --version
-          ruff --version
-          git rev-parse HEAD
-          git status
+#      - name: Debug
+#        run: |
+#          python --version
+#          ruff --version
+#          git rev-parse HEAD
+#          git status
 
       - name: Lint
         run: |
