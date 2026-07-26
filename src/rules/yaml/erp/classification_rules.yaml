@@ -21,14 +21,17 @@ Invoice:
 
 Contract:
   filename_patterns:
-    - 'contract'
-    - 'msa'
-    - 'agreement'
+    - contract
+    - agreement
+    - msa
 
   content_patterns:
-    - "this\\s*agreement"
-    - "parties\\s*hereto"
-    - "effective\\s*date"
+    - service\s*agreement
+    - master\s*service\s*agreement
+    - this\s*agreement
+    - contract\s*number
+    - effective\s*date
+    - parties\s*hereto
 
 Vendor Profile:
   filename_patterns:

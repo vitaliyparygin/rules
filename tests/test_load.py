@@ -2,7 +2,9 @@ from pathlib import Path
 import re
 import pytest
 import yaml
-from rules.loader import load_classification_rules, load_extraction_rules, load_extraction_rules
+from rules.loader import load_classification_rules, load_extraction_rules
+from rules.loader import load_field_rules
+from rules.models import FieldRule
 
 
 def test_load_classification_rules_missing_file():
@@ -82,6 +84,30 @@ def test_customer_rule():
         for f in rules["Contract"]
     }
 
-    assert contract["customer"].patterns == (
-        r"client\s*[:\-]?\s*([^\n]+)",
-    )
+    patterns = contract["customer"].patterns
+
+    assert r"customer\s*:\s*([^\n]+)" in patterns
+    assert len(patterns) >= 1
+    assert any("customer" in p for p in patterns)
+    assert r"bill\s*to\s*:\s*([^\n]+)" in patterns
+
+
+def test_load_field_rules():
+    rules = load_field_rules()
+
+    assert "Invoice" in rules
+
+    invoice = rules["Invoice"]
+
+    assert isinstance(invoice, tuple)
+    assert isinstance(invoice[0], FieldRule)
+
+
+def test_load_classification_rules_empty_yaml(tmp_path):
+    path = tmp_path / "empty.yaml"
+
+    path.write_text("", encoding="utf-8")
+
+    with pytest.raises(ValueError):
+        load_classification_rules(path)
+

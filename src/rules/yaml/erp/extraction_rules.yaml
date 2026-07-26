@@ -1,13 +1,10 @@
 Purchase Order:
   po_number:
     - '(?:p\.?o\.?|purchase\s*order)\s*(?:no|number|#)\s*[:\-]?\s*([A-Za-z0-9\-]+)'
-
   vendor:
     - 'vendor\s*(?:name)?\s*[:\-]?\s*([^\n]+)'
-
   amount:
     - 'total\s*[:\-]?\s*\$?\s*([\d,]+\.\d{2})'
-
   delivery_date:
     - 'delivery\s*date\s*[:\-]?\s*([\d/\-\.]+)'
 
@@ -27,13 +24,19 @@ Contract:
   contract_number:
     - 'contract\s*(?:no|number|#)\s*[:\-]?\s*([A-Za-z0-9\-]+)'
   customer:
-    - 'client\s*[:\-]?\s*([^\n]+)'
+    - 'customer\s*:\s*([^\n]+)'
+    - 'bill\s*to\s*:\s*([^\n]+)'
+    - 'client\s*:\s*([^\n]+)'
   contractor:
     - 'contractor\s*[:\-]?\s*([^\n]+)'
   start_date:
     - 'start\s*date\s*[:\-]?\s*([\d/\-\.]+)'
-  'end_date':
+  end_date:
     - 'end\s*date\s*[:\-]?\s*([\d/\-\.]+)'
+  signed:
+    - 'Signed\s*:\s*([\d/\-.]+)'
+  valid_until:
+    - 'Valid\s*Until\s*:\s*([\d/\-.]+)'
 
 
 Vendor Profile:

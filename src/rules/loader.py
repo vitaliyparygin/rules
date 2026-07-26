@@ -7,8 +7,8 @@ from .models import (QuestionTemplateRule,
                      FieldRule,
                      TemplateDefinition)
 
-
 RULES_DIR = Path(__file__).resolve().parent
+_RESOURCE_DIR = Path(__file__).parent / "yaml"
 
 def load_template(template: str) -> TemplateDefinition:
     base = RULES_DIR / "yaml" / template
