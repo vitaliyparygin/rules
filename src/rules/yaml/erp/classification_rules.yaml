@@ -14,9 +14,11 @@ Invoice:
     - "\\binv[-_]?\\d+"
 
   content_patterns:
-    - "invoice\\s*(no|number|#)"
-    - "total\\s*due"
-    - "bill\\s*to"
+    - '\binvoice\b'
+    - 'invoice\s*(no|number|#)'
+    - 'invoice\s*number'
+    - 'total\s*due'
+    - 'bill\s*to'
 
 
 Contract:
@@ -26,12 +28,11 @@ Contract:
     - msa
 
   content_patterns:
-    - service\s*agreement
-    - master\s*service\s*agreement
-    - this\s*agreement
-    - contract\s*number
-    - effective\s*date
-    - parties\s*hereto
+    - '\bagreement\b'
+    - 'service\s*agreement'
+    - 'contract\s*number'
+    - 'договір'
+    - 'this\s*agreement'
 
 Vendor Profile:
   filename_patterns:
@@ -55,7 +56,7 @@ Service Ticket:
 CRM Opportunity:
   filename_patterns:
     - "opportunity"
-    - "\bcrm\b"
+    - '\bcrm\b'
     - "deal"
 
   content_patterns:
