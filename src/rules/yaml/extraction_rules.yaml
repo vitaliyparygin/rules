@@ -1,1 +1,4 @@
-
+Contract:
+    contract_number:
+        - 'Contract Number:\s*([A-Z0-9\-]+)'
+        - 'Номер договору:\s*([A-Z0-9\-]+)'

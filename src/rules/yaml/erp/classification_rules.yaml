@@ -2,14 +2,19 @@ Purchase Order:
   filename_patterns:
     - "purchase[-_ ]?order"
     - "\\bpo[-_]?\\d+"
+    - '\bPO-\d+(?:-\d+)*\b'
 
   content_patterns:
     - "purchase\\s*order"
     - "\\bp\\.?o\\.?\\s*(no|number|#)"
-
+    - '\bpurchase\s*order\b'
+    - '\bpo-\d+'
+    - '\bp\.?o\.?\s*(no|number|#)'
+    - '\bpo[-_]?\d+'
 
 Invoice:
   filename_patterns:
+    - 'INV-\d+'
     - 'invoice'
     - "\\binv[-_]?\\d+"
 
@@ -19,6 +24,7 @@ Invoice:
     - 'invoice\s*number'
     - 'total\s*due'
     - 'bill\s*to'
+    - '\bINV-\d+(?:-\d+)*\b'
 
 
 Contract:
@@ -33,6 +39,8 @@ Contract:
     - 'contract\s*number'
     - 'договір'
     - 'this\s*agreement'
+    - '\bcontract\b'
+    - '\bC-\d+\b'
 
 Vendor Profile:
   filename_patterns:

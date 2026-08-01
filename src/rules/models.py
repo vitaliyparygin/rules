@@ -2,10 +2,23 @@ from __future__ import annotations
 from enum import StrEnum
 from dataclasses import dataclass, field
 
+
+class DocumentType(StrEnum):
+    INVOICE = "Invoice"
+    CONTRACT = "Contract"
+    PURCHASE_ORDER = "Purchase Order"
+    CRM_OPPORTUNITY = "CRM Opportunity"
+    VENDOR_PROFILE = "Vendor Profile"
+    PROJECT = "Project"
+    EMPLOYEE = "Employee"
+    SERVICE_TICKET = "Service Ticket"
+
+
 @dataclass(frozen=True)
 class FieldRule:
     name: str
     patterns: tuple[str, ...]
+
 
 class Difficulty(StrEnum):
     """Difficulty tiers for generated benchmark questions."""
@@ -13,6 +26,7 @@ class Difficulty(StrEnum):
     EASY = "easy"
     MEDIUM = "medium"
     HARD = "hard"
+
 
 @dataclass(frozen=True)
 class ClassificationRule:
@@ -29,6 +43,7 @@ class ClassificationRule:
     filename_patterns: tuple[str, ...] = field(default_factory=tuple)
     content_patterns: tuple[str, ...] = field(default_factory=tuple)
     content_weight: float = 0.7
+
 
 @dataclass
 class QuestionField:
