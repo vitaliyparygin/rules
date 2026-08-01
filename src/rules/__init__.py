@@ -5,4 +5,5 @@ from .extraction import extract_metadata
 
 __all__ = [
     "detect_document_type",
+    "extract_metadata",
 ]
