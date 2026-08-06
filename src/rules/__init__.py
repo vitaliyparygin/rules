@@ -1,4 +1,4 @@
-__version__ = "0.1.5"
+__version__ = "0.1.6"
 
 from .document_type import detect_document_type
 from .extraction import extract_metadata
