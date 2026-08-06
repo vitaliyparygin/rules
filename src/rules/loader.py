@@ -86,35 +86,53 @@ def load_classification_rules(
 
     return tuple(result)
 
-def load_question_templates(path: Path | None = None,) -> dict[str, list[QuestionTemplateRule]]:
+
+def load_question_templates(
+    path: Path | None = None,
+) -> dict[str, list[QuestionTemplateRule]]:
     path = path or (RULES_DIR / "yaml/erp" / "question_templates.yaml")
+
     with path.open("r", encoding="utf-8") as f:
         raw = yaml.safe_load(f)
+
     if raw is None:
-        raise ValueError(
-            f"{path} is empty or invalid YAML"
-        )
+        raise ValueError(f"{path} is empty or invalid YAML")
+
     result: dict[str, list[QuestionTemplateRule]] = {}
 
     for document_type, specs in raw.items():
-
         result[document_type] = []
 
         for spec in specs:
+            query_template = spec["query_template"]
+
+            if isinstance(query_template, str):
+                query_template = (query_template,)
+            else:
+                query_template = tuple(query_template)
 
             result[document_type].append(
                 QuestionTemplateRule(
                     key=spec["key"],
-                    query_template=tuple(spec["query_template"]),
+                    query_template=query_template,
                     fields=tuple(
-                        QuestionField(name)
-                        for name in spec["fields"]
+                        QuestionField(
+                            name=field["name"] if isinstance(field, dict) else field,
+                            required=field.get("required", False) if isinstance(field,
+                                                                                dict) else False,
+                            aliases=tuple(field.get("aliases", ())) if isinstance(field,
+                                                                                  dict) else (),
+                            weight=field.get("weight", 1.0) if isinstance(field, dict) else 1.0,
+                        )
+                        for field in spec["fields"]
                     ),
                     tags=tuple(spec.get("tags", ())),
                 )
             )
 
     return result
+
+
 
 
 def load_extraction_rules(
@@ -140,3 +158,25 @@ def load_extraction_rules(
         )
 
     return result
+
+def _load_question_field(raw_field: str | dict) -> QuestionField:
+    if isinstance(raw_field, str):
+        return QuestionField(name=raw_field)
+
+    if isinstance(raw_field, dict):
+        if "name" not in raw_field:
+            raise ValueError(
+                f"Question field mapping must contain 'name': {raw_field!r}"
+            )
+
+        return QuestionField(
+            name=raw_field["name"],
+            aliases=raw_field.get("aliases", []),
+            required=raw_field.get("required", False),
+            weight=raw_field.get("weight", 1),
+        )
+
+    raise TypeError(
+        "Question field must be a string or mapping, "
+        f"got {type(raw_field).__name__}"
+    )

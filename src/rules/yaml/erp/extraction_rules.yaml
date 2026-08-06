@@ -12,7 +12,8 @@ Purchase Order:
 Invoice:
   invoice_number:
     - '\b(INV-\d+(?:-\d+)*)\b'
-    - 'invoice\s*(?:no|number|#)?\s*[:\-]?\s*([A-Za-z0-9\-]+)'
+    - '\binvoice\s+(?:no|number)\s*[:\-]\s*([A-Za-z0-9\-]+)'
+    - '\binvoice\s+#\s*([A-Za-z0-9\-]+)'
   amount:
     - 'total\s*(?:due|amount)?\s*[:\-]?\s*\$?\s*([\d,]+\.\d{2})'
   customer:
@@ -44,14 +45,20 @@ Contract:
 
 Vendor Profile:
   vendor:
-    - 'vendor\s*name\s*[:\-]?\s*([^\n]+)'
+    - 'vendor\s*[:\-]\s*([^\n]+)'
+
+  vendor_id:
+    - 'vendor\s+id\s*[:\-]?\s*([A-Za-z0-9\-]+)'
 
   phone:
-    - '(?:phone|tel)\s*[:\-]?\s*([\d\-\+\(\) ]{7,})'
+    - '(?:phone|tel|telephone)\s*[:\-]?\s*([\d\-\+\(\) ]{7,})'
+
   email:
-    - '([\w.\-]+@[\w.\-]+\.\w+)'
+    - '(?:email|e-mail)\s*[:\-]?\s*([\w.\-]+@[\w.\-]+\.\w+)'
+
   address:
     - 'address\s*[:\-]?\s*([^\n]+)'
+
 
 Service Ticket:
   ticket_number:

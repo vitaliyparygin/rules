@@ -49,8 +49,8 @@ class ClassificationRule:
 class QuestionField:
     name: str
     required: bool = False
-    aliases: list[str] = field(default_factory=list)
-    weight: int = 1
+    aliases: tuple[str, ...] = ()
+    weight: float = 1.0
 
     def __str__(self) -> str:
         return self.name
