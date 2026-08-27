@@ -95,9 +95,9 @@ def test_customer_rule():
 def test_load_field_rules():
     rules = load_field_rules()
 
-    assert "Invoice" in rules
+    assert "invoice" in rules
 
-    invoice = rules["Invoice"]
+    invoice = rules["invoice"]
 
     assert isinstance(invoice, tuple)
     assert isinstance(invoice[0], FieldRule)

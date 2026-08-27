@@ -45,3 +45,13 @@ def test_question_template_query_templates_are_strings():
                 isinstance(template, str)
                 for template in spec.query_template
             )
+
+def test_extract_metadata_accepts_document_type_enum():
+    from rules.extraction import extract_metadata
+    from rules.models import DocumentType
+
+    text = "Invoice Number: INV-1"
+
+    assert extract_metadata(text, DocumentType.INVOICE) == {
+        "invoice_number": "INV-1"
+    }
