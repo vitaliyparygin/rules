@@ -5,7 +5,7 @@ from .models import (QuestionTemplateRule,
                       ClassificationRule,
                      QuestionField,
                      FieldRule,
-                     TemplateDefinition, DocumentType)
+                     TemplateDefinition)
 
 RULES_DIR = Path(__file__).resolve().parent
 _RESOURCE_DIR = Path(__file__).parent / "yaml"
