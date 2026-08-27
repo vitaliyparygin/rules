@@ -1,4 +1,4 @@
-Purchase Order:
+purchase_order:
   - key: Purchase Order
 
     query_template:
@@ -15,7 +15,7 @@ Purchase Order:
       - erp
       - metadata
 
-Invoice:
+invoice:
   - key: Invoice
     query_template:
       - "What is the {field} on invoice {filename}?"
@@ -84,7 +84,7 @@ Invoice:
       - erp
       - metadata
 
-Contract:
+contract:
   - key: Contract
     query_template:
       - "What is the {field} in contract {filename}?"
@@ -99,7 +99,7 @@ Contract:
       - erp
       - metadata
 
-Vendor Profile:
+vendor_profile:
   - key: Vendor Profile
     query_template:
       - "What is the {field} of the vendor in {filename}?"
@@ -131,7 +131,7 @@ Vendor Profile:
       - erp
       - metadata
 
-Service Ticket:
+service_ticket:
   - key: Service Ticket
     query_template:
       - "What is the {field} for service ticket {filename}?"
@@ -145,7 +145,7 @@ Service Ticket:
       - erp
       - metadata
 
-CRM Opportunity:
+crm_opportunity:
   - key: CRM Opportunity
     query_template:
       - "What is the {field} of the opportunity in {filename}?"
@@ -158,7 +158,7 @@ CRM Opportunity:
       - erp
       - metadata
 
-Project:
+project:
   - key: Project
     query_template:
       - "What is the {field} of the project described in {filename}?"
@@ -171,7 +171,7 @@ Project:
       - erp
       - metadata
 
-Employee:
+employee:
   - key: Employee
     query_template:
       - "What is the {field} for the employee record in {filename}?"

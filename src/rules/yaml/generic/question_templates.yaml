@@ -13,7 +13,7 @@ Invoice:
       - customer
       - currency
 
-Vendor Profile:
+vendor_profile:
   - key: Vendor Profile
     query_template:
       - "What is the {field} of the vendor described in {filename}?"

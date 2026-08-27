@@ -1,4 +1,4 @@
-Purchase Order:
+purchase_order:
   filename_patterns:
     - "purchase[-_ ]?order"
     - "\\bpo[-_]?\\d+"
@@ -12,7 +12,7 @@ Purchase Order:
     - '\bp\.?o\.?\s*(no|number|#)'
     - '\bpo[-_]?\d+'
 
-Invoice:
+invoice:
   filename_patterns:
     - 'INV-\d+'
     - 'invoice'
@@ -27,7 +27,7 @@ Invoice:
     - '\bINV-\d+(?:-\d+)*\b'
 
 
-Contract:
+contract:
   filename_patterns:
     - contract
     - agreement
@@ -42,7 +42,7 @@ Contract:
     - '\bcontract\b'
     - '\bC-\d+\b'
 
-Vendor Profile:
+vendor_profile:
   filename_patterns:
     - 'vendor'
     - 'supplier'
@@ -51,7 +51,7 @@ Vendor Profile:
     - 'vendor\s*(name|profile|id)'
     - 'supplier\s*information'
 
-Service Ticket:
+service_ticket:
   filename_patterns:
     - 'ticket'
     - "service[-_ ]?request"
@@ -61,7 +61,7 @@ Service Ticket:
     - 'assigned\s*engineer'
     - 'priority\s*:'
 
-CRM Opportunity:
+crm_opportunity:
   filename_patterns:
     - "opportunity"
     - '\bcrm\b'
@@ -71,14 +71,14 @@ CRM Opportunity:
     - 'opportunity\s*(name|stage|value)'
     - 'deal\s*stage'
 
-Project:
+project:
   filename_patterns:
     - "project"
 
   content_patterns:
     - 'project\s*(status|milestones|deliverables)'
 
-Employee:
+employee:
   filename_patterns:
     - "employee"
     - "hr[-_ ]?record"

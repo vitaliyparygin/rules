@@ -1,9 +1,13 @@
-__version__ = "0.1.6"
+# src/rules/__init__.py
+
+__version__ = "0.1.7"
 
 from .document_type import detect_document_type
 from .extraction import extract_metadata
+from .models import DocumentType
 
 __all__ = [
+    "DocumentType",
     "detect_document_type",
     "extract_metadata",
 ]

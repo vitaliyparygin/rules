@@ -1,4 +1,4 @@
-Purchase Order:
+purchase_order:
   po_number:
     - '\b(PO-\d+(?:-\d+)*)\b'
     - '(?:p\.?o\.?|purchase\s*order)\s*(?:no|number|#)?\s*[:\-]?\s*([A-Za-z0-9\-]+)'
@@ -9,7 +9,7 @@ Purchase Order:
   delivery_date:
     - 'delivery\s*date\s*[:\-]?\s*([\d/\-\.]+)'
 
-Invoice:
+invoice:
   invoice_number:
     - '\b(INV-\d+(?:-\d+)*)\b'
     - '\binvoice\s+(?:no|number)\s*[:\-]\s*([A-Za-z0-9\-]+)'
@@ -23,7 +23,7 @@ Invoice:
   due_date:
     - 'due\s*date\s*[:\-]?\s*([\d/\-\.]+)'
 
-Contract:
+contract:
   contract_number:
     - '\b(C-\d+)\b'
     - 'contract\s*(?:no|number|#)?\s*[:\-]?\s*([A-Za-z0-9\-]+)'
@@ -43,7 +43,7 @@ Contract:
     - 'Valid\s*Until\s*:\s*([\d/\-.]+)'
 
 
-Vendor Profile:
+vendor_profile:
   vendor:
     - 'vendor\s*[:\-]\s*([^\n]+)'
 
@@ -60,7 +60,7 @@ Vendor Profile:
     - 'address\s*[:\-]?\s*([^\n]+)'
 
 
-Service Ticket:
+service_ticket:
   ticket_number:
     - 'ticket\s*(?:no|number|#)\s*[:\-]?\s*([A-Za-z0-9\-]+)'
   status:
@@ -70,7 +70,7 @@ Service Ticket:
   priority:
     - 'priority\s*[:\-]?\s*([A-Za-z]+)'
 
-CRM Opportunity:
+crm_opportunity:
   opportunity_name:
     - 'opportunity\s*name\s*[:\-]?\s*([^\n]+)'
   stage:
@@ -78,7 +78,7 @@ CRM Opportunity:
   value:
     - 'value\s*[:\-]?\s*\$?\s*([\d,]+\.\d{2})'
 
-Project:
+project:
   project_name:
     - 'project\s*(?:name)?\s*[:\-]?\s*([^\n]+)'
   status:
@@ -86,7 +86,7 @@ Project:
   manager:
     - '(?:project\s*)?manager\s*[:\-]?\s*([^\n]+)'
 
-Employee:
+employee:
   employee_id:
     - 'employee\s*id\s*[:\-]?\s*([A-Za-z0-9\-]+)'
   department:

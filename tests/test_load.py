@@ -81,7 +81,7 @@ def test_customer_rule():
 
     contract = {
         f.name: f
-        for f in rules["Contract"]
+        for f in rules["contract"]
     }
 
     patterns = contract["customer"].patterns
