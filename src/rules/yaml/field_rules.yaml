@@ -27,7 +27,7 @@ Invoice:
       - 'amount.*?\b(USD|EUR|UAH|PLN|GBP)\b'
       - '\b(USD|EUR|UAH|PLN|GBP)\b'
 
-Purchase Order:
+purchase_order:
 
   - name: po_number
     patterns:
@@ -41,7 +41,7 @@ Purchase Order:
     patterns:
       - 'total\s*[:\-]?\s*\$?\s*([\d,]+\.\d{2})'
 
-Vendor Profile:
+vendor_profile:
 
   - name: vendor
     patterns:
@@ -124,7 +124,7 @@ Insurance Policy:
     patterns:
       - 'coverage\s*period\s*[:\-]?\s*([^\n]+)'
 
-Service Ticket:
+service_ticket:
 
   - name: ticket_number
     patterns:
@@ -157,7 +157,7 @@ Bank Statement:
       - 'closing\s+balance[\s\S]{0,80}?\$?([\d,]+\.\d{2})'
       - 'final\s+balance[\s\S]{0,80}?\$?([\d,]+\.\d{2})'
 
-CRM Opportunity:
+crm_opportunity:
 
   - name: opportunity_name
     patterns:

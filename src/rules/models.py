@@ -4,14 +4,14 @@ from dataclasses import dataclass, field
 
 
 class DocumentType(StrEnum):
-    INVOICE = "Invoice"
-    CONTRACT = "Contract"
-    PURCHASE_ORDER = "Purchase Order"
-    CRM_OPPORTUNITY = "CRM Opportunity"
-    VENDOR_PROFILE = "Vendor Profile"
-    PROJECT = "Project"
-    EMPLOYEE = "Employee"
-    SERVICE_TICKET = "Service Ticket"
+    INVOICE = "invoice"
+    CONTRACT = "contract"
+    PURCHASE_ORDER = "purchase_order"
+    CRM_OPPORTUNITY = "crm_opportunity"
+    VENDOR_PROFILE = "vendor_profile"
+    PROJECT = "project"
+    EMPLOYEE = "employee"
+    SERVICE_TICKET = "service_ticket"
 
 
 @dataclass(frozen=True)
@@ -75,7 +75,7 @@ class ExtractionField:
 
 @dataclass
 class ExtractionRuleSet:
-    document_type: str
+    document_type: DocumentType
     fields: dict[str, tuple[str, ...]]
 
 
@@ -83,5 +83,5 @@ class ExtractionRuleSet:
 class TemplateDefinition:
     name: str
     classification_rules: tuple[ClassificationRule, ...]
-    extraction_rules: dict[str, tuple[FieldRule, ...]]
-    question_templates: dict[str, list[QuestionTemplateRule]]
+    extraction_rules: dict[DocumentType, tuple[FieldRule, ...]]
+    question_templates: dict[DocumentType, list[QuestionTemplateRule]]

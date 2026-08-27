@@ -5,7 +5,7 @@ from .models import (QuestionTemplateRule,
                       ClassificationRule,
                      QuestionField,
                      FieldRule,
-                     TemplateDefinition)
+                     TemplateDefinition, DocumentType)
 
 RULES_DIR = Path(__file__).resolve().parent
 _RESOURCE_DIR = Path(__file__).parent / "yaml"
@@ -64,15 +64,14 @@ def load_field_rules(
 def load_classification_rules(
     path: Path | None = None,
 ) -> tuple[ClassificationRule, ...]:
-
     path = path or (RULES_DIR / "yaml/erp" / "classification_rules.yaml")
 
     with path.open("r", encoding="utf-8") as f:
         raw = yaml.safe_load(f)
+
     if raw is None:
-        raise ValueError(
-            f"{path} is empty or invalid YAML"
-        )
+        raise ValueError(f"{path} is empty or invalid YAML")
+
     result: list[ClassificationRule] = []
 
     for document_type, rule in raw.items():

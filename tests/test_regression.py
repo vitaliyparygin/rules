@@ -6,8 +6,8 @@ def test_load_question_templates_accepts_single_string_template(tmp_path):
 
     path.write_text(
         """
-Vendor Profile:
-  - key: Vendor Profile
+vendor_profile:
+  - key: vendor_profile
     query_template: "What is the {field} of the vendor in {filename}?"
     fields:
       - vendor
@@ -20,7 +20,7 @@ Vendor Profile:
 
     result = load_question_templates(path)
 
-    spec = result["Vendor Profile"][0]
+    spec = result["vendor_profile"][0]
 
     assert spec.query_template == (
         "What is the {field} of the vendor in {filename}?",
@@ -29,7 +29,7 @@ Vendor Profile:
 def test_question_template_query_template_is_tuple():
     definition = load_template("erp")
 
-    spec = definition.question_templates["Vendor Profile"][0]
+    spec = definition.question_templates["vendor_profile"][0]
 
     assert isinstance(spec.query_template, tuple)
     assert spec.query_template == (

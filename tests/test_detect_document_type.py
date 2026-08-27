@@ -9,17 +9,17 @@ from rules import detect_document_type
         (
             "Invoice.pdf",
             "",
-            "Invoice",
+            "invoice",
         ),
         (
             "",
             "Invoice Number: INV-001",
-            "Invoice",
+            "invoice",
         ),
         (
             "Vendor Agreement.pdf",
             "",
-            "Contract",
+            "contract",
         ),
         (
             "",
@@ -27,12 +27,12 @@ from rules import detect_document_type
             This Agreement
             Effective Date: 2025-01-01
             """,
-            "Contract",
+            "contract",
         ),
         (
             "Purchase Order.pdf",
             "",
-            "Purchase Order",
+            "purchase_order",
         ),
         (
             "",
@@ -41,14 +41,14 @@ from rules import detect_document_type
 
             PO Number: PO-001
             """,
-            "Purchase Order",
+            "purchase_order",
         ),
         (
             "",
             """
             Opportunity Stage: Qualification
             """,
-            "CRM Opportunity",
+            "crm_opportunity",
         ),
         (
             "",

@@ -4,13 +4,13 @@ Invoice:
     - bill
     - tax invoice
 
-Purchase Order:
+purchase_order:
   aliases:
     - purchase order
     - po
     - order confirmation
 
-Vendor Profile:
+vendor_profile:
   aliases:
     - vendor profile
     - supplier
