@@ -15,7 +15,13 @@ def extract_metadata(
 
     metadata: dict[str, str] = {}
 
-    fields = _RULES.get(document_type)
+    document_type_key = (
+        document_type.value
+        if isinstance(document_type, DocumentType)
+        else document_type
+    )
+
+    fields = _RULES.get(document_type_key)
 
     if fields is None:
         return {}

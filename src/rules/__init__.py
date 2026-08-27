@@ -1,6 +1,6 @@
 # src/rules/__init__.py
 
-__version__ = "0.1.7"
+__version__ = "0.1.8"
 
 from .document_type import detect_document_type
 from .extraction import extract_metadata

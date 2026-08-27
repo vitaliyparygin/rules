@@ -1,4 +1,4 @@
-Invoice:
+invoice:
 
   - name: invoice_number
     patterns:
@@ -59,7 +59,7 @@ vendor_profile:
     patterns:
       - 'address\s*[:\-]?\s*([^\n]+)'
 
-Employment Contract:
+employment_contract:
 
   - name: contract_number
     patterns:
@@ -85,7 +85,7 @@ Employment Contract:
       - 'valid\s+until\s*:\s*([\d-]+)'
       - 'end\s*date\s*:\s*([\d-]+)'
 
-Generic Contract:
+generic_contract:
 
   - name: contract_number
     patterns:
@@ -110,7 +110,7 @@ Generic Contract:
       - 'valid\s*until\s*[:\-]?\s*([\d\-\.]+)'
       - 'end\s*date\s*[:\-]?\s*([\d\-\.]+)'
 
-Insurance Policy:
+snsurance_policy:
 
   - name: policy_number
     patterns:
@@ -138,7 +138,7 @@ service_ticket:
     patterns:
       - '(?:assigned\s*)?engineer\s*[:\-]?\s*([^\n]+)'
 
-Bank Statement:
+bank_statement:
 
   - name: account_number
     patterns:
@@ -171,7 +171,7 @@ crm_opportunity:
     patterns:
       - 'value\s*[:\-]?\s*([\d,]+(?:\.\d{2})?)'
 
-Project Report:
+project_report:
 
   - name: project_name
     patterns:
@@ -181,7 +181,7 @@ Project Report:
     patterns:
       - 'status\s*[:\-]?\s*([A-Za-z ]+)'
 
-Meeting Minutes:
+meeting_minutes:
 
   - name: meeting_date
     patterns:
