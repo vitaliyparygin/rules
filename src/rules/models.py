@@ -90,5 +90,5 @@ class ExtractionRuleSet:
 class TemplateDefinition:
     name: str
     classification_rules: tuple[ClassificationRule, ...]
-    extraction_rules: dict[DocumentType, tuple[FieldRule, ...]]
-    question_templates: dict[DocumentType, list[QuestionTemplateRule]]
+    extraction_rules: dict[str, tuple[FieldRule, ...]]
+    question_templates: dict[str, list[QuestionTemplateRule]]

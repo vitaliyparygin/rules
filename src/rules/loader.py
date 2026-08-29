@@ -20,13 +20,15 @@ def load_template(template: str) -> TemplateDefinition:
     if classification_file.exists():
         classification = load_classification_rules(classification_file)
 
-    extraction = {}
+    extraction: dict[str, tuple[FieldRule, ...]] = {}
     extraction_file = base / "extraction_rules.yaml"
 
     if extraction_file.exists():
         extraction = load_extraction_rules(extraction_file)
 
-    questions = load_question_templates(base / "question_templates.yaml")
+    questions = load_question_templates(
+        base / "question_templates.yaml"
+    )
 
     return TemplateDefinition(
         name=template,
@@ -39,19 +41,25 @@ def load_template(template: str) -> TemplateDefinition:
 def load_field_rules(
     path: Path | None = None,
 ) -> dict[DocumentType, tuple[FieldRule, ...]]:
-
     path = path or (RULES_DIR / "yaml" / "field_rules.yaml")
 
     with path.open("r", encoding="utf-8") as f:
         raw = yaml.safe_load(f)
+
     if raw is None:
-        raise ValueError(
-            f"{path} is empty or invalid YAML"
-        )
-    result: dict[str, tuple[FieldRule, ...]] = {}
+        raise ValueError(f"{path} is empty or invalid YAML")
+
+    result: dict[DocumentType, tuple[FieldRule, ...]] = {}
 
     for document_type, fields in raw.items():
-        result[document_type] = tuple(
+        try:
+            document_type_enum = DocumentType(document_type)
+        except ValueError as exc:
+            raise ValueError(
+                f"Unknown document type {document_type!r} in {path}"
+            ) from exc
+
+        result[document_type_enum] = tuple(
             FieldRule(
                 name=field["name"],
                 patterns=tuple(field["patterns"]),
@@ -60,7 +68,6 @@ def load_field_rules(
         )
 
     return result
-
 
 def load_classification_rules(
     path: Path | None = None,
@@ -86,11 +93,12 @@ def load_classification_rules(
 
     return tuple(result)
 
-
 def load_question_templates(
     path: Path | None = None,
 ) -> dict[str, list[QuestionTemplateRule]]:
-    path = path or (RULES_DIR / "yaml/erp" / "question_templates.yaml")
+    path = path or (
+        RULES_DIR / "yaml" / "erp" / "question_templates.yaml"
+    )
 
     with path.open("r", encoding="utf-8") as f:
         raw = yaml.safe_load(f)
@@ -116,14 +124,7 @@ def load_question_templates(
                     key=spec["key"],
                     query_template=query_template,
                     fields=tuple(
-                        QuestionField(
-                            name=field["name"] if isinstance(field, dict) else field,
-                            required=field.get("required", False) if isinstance(field,
-                                                                                dict) else False,
-                            aliases=tuple(field.get("aliases", ())) if isinstance(field,
-                                                                                  dict) else (),
-                            weight=field.get("weight", 1.0) if isinstance(field, dict) else 1.0,
-                        )
+                        _load_question_field(field)
                         for field in spec["fields"]
                     ),
                     tags=tuple(spec.get("tags", ())),
@@ -133,19 +134,21 @@ def load_question_templates(
     return result
 
 
-
-
 def load_extraction_rules(
     path: Path | None = None,
 ) -> dict[str, tuple[FieldRule, ...]]:
-    path = path or (RULES_DIR / "yaml/erp" / "extraction_rules.yaml")
+    path = path or (
+        RULES_DIR / "yaml" / "erp" / "extraction_rules.yaml"
+    )
 
     with path.open("r", encoding="utf-8") as f:
         raw = yaml.safe_load(f)
+
     if raw is None:
         raise ValueError(
             f"{path} is empty or invalid YAML"
         )
+
     result: dict[str, tuple[FieldRule, ...]] = {}
 
     for document_type, fields in raw.items():
