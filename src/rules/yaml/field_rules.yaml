@@ -110,7 +110,7 @@ generic_contract:
       - 'valid\s*until\s*[:\-]?\s*([\d\-\.]+)'
       - 'end\s*date\s*[:\-]?\s*([\d\-\.]+)'
 
-snsurance_policy:
+insurance_policy:
 
   - name: policy_number
     patterns:

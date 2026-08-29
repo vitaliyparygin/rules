@@ -5,7 +5,7 @@ import yaml
 from rules.loader import load_classification_rules, load_extraction_rules
 from rules.loader import load_field_rules
 from rules.models import FieldRule
-
+from rules.models import DocumentType
 
 def test_load_classification_rules_missing_file():
     with pytest.raises(FileNotFoundError):
@@ -95,9 +95,9 @@ def test_customer_rule():
 def test_load_field_rules():
     rules = load_field_rules()
 
-    assert "invoice" in rules
+    assert DocumentType.INVOICE in rules
 
-    invoice = rules["invoice"]
+    invoice = rules[DocumentType.INVOICE]
 
     assert isinstance(invoice, tuple)
     assert isinstance(invoice[0], FieldRule)
@@ -111,3 +111,8 @@ def test_load_classification_rules_empty_yaml(tmp_path):
     with pytest.raises(ValueError):
         load_classification_rules(path)
 
+
+def test_field_rule_document_types_match_document_type_enum():
+    rules = load_field_rules()
+
+    assert set(rules) <= set(DocumentType)
