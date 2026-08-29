@@ -5,7 +5,8 @@ from .models import (QuestionTemplateRule,
                       ClassificationRule,
                      QuestionField,
                      FieldRule,
-                     TemplateDefinition)
+                     TemplateDefinition,
+                     DocumentType)
 
 RULES_DIR = Path(__file__).resolve().parent
 _RESOURCE_DIR = Path(__file__).parent / "yaml"
@@ -37,7 +38,7 @@ def load_template(template: str) -> TemplateDefinition:
 
 def load_field_rules(
     path: Path | None = None,
-) -> dict[str, tuple[FieldRule, ...]]:
+) -> dict[DocumentType, tuple[FieldRule, ...]]:
 
     path = path or (RULES_DIR / "yaml" / "field_rules.yaml")
 

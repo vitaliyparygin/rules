@@ -4,6 +4,7 @@ from dataclasses import dataclass, field
 
 
 class DocumentType(StrEnum):
+    UNKNOWN = "unknown"
     INVOICE = "invoice"
     CONTRACT = "contract"
     PURCHASE_ORDER = "purchase_order"
@@ -12,6 +13,12 @@ class DocumentType(StrEnum):
     PROJECT = "project"
     EMPLOYEE = "employee"
     SERVICE_TICKET = "service_ticket"
+    EMPLOYMENT_CONTRACT = "employment_contract"
+    INSURANCE_POLICY = "insurance_policy"
+    MEETING_MINUTES = "meeting_minutes"
+    BANK_STATEMENT = "bank_statement"
+    PROJECT_REPORT = "project_report"
+    GENERIC_CONTRACT = "generic_contract"
 
 
 @dataclass(frozen=True)
